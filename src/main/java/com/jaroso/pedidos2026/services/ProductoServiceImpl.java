@@ -2,28 +2,52 @@ package com.jaroso.pedidos2026.services;
 
 import com.jaroso.pedidos2026.dtos.ProductoCreateDto;
 import com.jaroso.pedidos2026.dtos.ProductoDto;
+import com.jaroso.pedidos2026.entities.Producto;
+import com.jaroso.pedidos2026.mappers.ProductoMapper;
+import com.jaroso.pedidos2026.repositories.ProductoRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProductoServiceImpl implements ProductoService {
-    @Override
+    @Autowired
+    private ProductoRepository repo;
+    @Autowired
+    private ProductoMapper mapper;
+
+
+
     public ProductoDto create(ProductoCreateDto dto) {
-        return null;
+        Producto producto = mapper.productoCreateDtoToEntity(dto);
+        return mapper.toDto(repo.save(producto));
     }
 
-    @Override
+    @Transactional(readOnly = true)
     public List<ProductoDto> findAll() {
-        return List.of();
+        return repo.findAll().stream().map(mapper::toDto).toList();
     }
 
-    @Override
+
+
     public Optional<ProductoDto> findById(Long id) {
-        return Optional.empty();
+        return repo.findById(id).map(mapper::toDto);
     }
+    @Transactional
+    public boolean delete(Long id) {
 
-    @Override
-    public void delete(ProductoDto dto) {
+            Optional<Producto> producto = repo.findById(id);
+
+            if (producto.isPresent()){
+                repo.delete(producto.get());
+                return  true;
+            }else {
+                return  false;
+            }
 
     }
 }

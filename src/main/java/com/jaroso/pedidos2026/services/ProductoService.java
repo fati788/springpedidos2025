@@ -10,5 +10,5 @@ public interface ProductoService {
     public ProductoDto create(ProductoCreateDto dto);
     public List<ProductoDto> findAll();
     public Optional<ProductoDto> findById(Long id);
-    public void delete(ProductoDto dto);
+    public boolean delete(Long id);
 }
