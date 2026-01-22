@@ -2,10 +2,7 @@ package com.jaroso.pedidos2026.services;
 
 import com.jaroso.pedidos2026.dtos.ClienteCreateDto;
 import com.jaroso.pedidos2026.dtos.ClienteDto;
-import com.jaroso.pedidos2026.dtos.ProductoCreateDto;
-import com.jaroso.pedidos2026.dtos.ProductoDto;
 import com.jaroso.pedidos2026.entities.Cliente;
-import com.jaroso.pedidos2026.entities.Producto;
 import com.jaroso.pedidos2026.mappers.ClienteMapper;
 import com.jaroso.pedidos2026.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;

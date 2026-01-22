@@ -2,9 +2,6 @@ package com.jaroso.pedidos2026.controllers;
 
 import com.jaroso.pedidos2026.dtos.ClienteCreateDto;
 import com.jaroso.pedidos2026.dtos.ClienteDto;
-import com.jaroso.pedidos2026.entities.Cliente;
-import com.jaroso.pedidos2026.entities.Producto;
-import com.jaroso.pedidos2026.repositories.ClienteRepository;
 import com.jaroso.pedidos2026.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/clientes")

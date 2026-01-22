@@ -1,6 +1,5 @@
 package com.jaroso.pedidos2026.entities;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 

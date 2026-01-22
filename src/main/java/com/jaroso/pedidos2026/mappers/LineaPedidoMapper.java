@@ -7,9 +7,13 @@ import com.jaroso.pedidos2026.dtos.LineaPedidoDto;
 import com.jaroso.pedidos2026.entities.Cliente;
 import com.jaroso.pedidos2026.entities.LineaPedido;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring" , uses = {ProductoMapper.class})
 public interface LineaPedidoMapper {
+    @Mapping(target = "subtotal", expression = "java(java.math.BigDecimal.valueOf(lineaPedido.getCantidad() " +
+            "* lineaPedido.getProducto().getPrecio()))")
+
     LineaPedidoDto toDto(LineaPedido lineaPedido);
     LineaPedido lineaPedidoCreateDtoEntity(LineaPedidoCreateDto dto);
 
