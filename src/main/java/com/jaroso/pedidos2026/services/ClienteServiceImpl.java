@@ -29,7 +29,7 @@ public class ClienteServiceImpl implements ClienteService {
         return mapper.toDto(repo.save(cliente));
     }
 
-    @Override
+    @Transactional(readOnly = true)
     public List<ClienteDto> findAll() {
         return repo.findAll().stream().map(mapper::toDto).toList();
     }
@@ -38,7 +38,7 @@ public class ClienteServiceImpl implements ClienteService {
     public Optional<ClienteDto> findById(Long id) {
         return repo.findById(id).map(mapper::toDto);
     }
-
+@Transactional
     @Override
     public boolean delete(Long id) {
         Optional<Cliente> cliente = repo.findById(id);
